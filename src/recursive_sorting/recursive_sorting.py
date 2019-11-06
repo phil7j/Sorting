@@ -1,51 +1,29 @@
 # TO-DO: complete the helpe function below to merge 2 sorted arrays
 def merge(arrA, arrB):
-    '''
-    elements = len(arrA) + len(arrB)
-    merged_arr = [0] * elements
-    # TO-DO
-    # compare smallest of arrA with smallest of arrB
-    # Smaller Value gets put into the merged_arr at current iterable
-    # Next smallest value gets put into the iterable + 1
-    # iterate +2 and do it again
-    for i, val in enumerate(merged_arr):
-        print(i)
-        print(merged_arr)
-        if arrA[i] < arrB[i]:
-            merged_arr[i] == arrA[i]
-            merged_arr[i+1] == arrB[i]
-        else:
-            merged_arr[i] == arrB[i]
-            merged_arr[i+1] == arrA[i]
-    '''
-    # initialize empty array
-    # find which array is longest
-    # iterate over longest array
-    # compare the two arrays, append smallest value first, and the other value
-    # if value of smaller array doesn't exist, just append the value from the longer array
+    i = 0
+    j = 0
+    len1 = len(arrA)
+    len2 = len(arrB)
+
     merged_arr = []
-    long_arr = None
-    short_arr = None
-    # find which arrays and longer or shorter
-    if len(arrA) > len(arrB):
-        long_arr = arrA
-        short_arr = arrB
-    else:
-        long_arr = arrB
-        short_arr = arrA
-    for i in range(0, len(long_arr)-1):
-        if i > len(short_arr)-1:
-            merged_arr.append(long_arr[i])
-        elif long_arr[i] < short_arr[i]:
-            merged_arr.append(long_arr[i])
-            merged_arr.append(short_arr[i])
+
+    while i < len1 and j < len2:
+        if arrA[i] < arrB[j]:
+            merged_arr.append(arrA[i])
+            i = i + 1
         else:
-            merged_arr.append(short_arr[i])
-            merged_arr.append(long_arr[i])
+            merged_arr.append(arrB[j])
+            j = j + 1
+    while i < len1:
+        merged_arr.append(arrA[i])
+        i = i + 1
+    while j < len2:
+        merged_arr.append(arrB[j])
+        j = j + 1
     return merged_arr
 
 
-print(merge([1, 2, 3], [4, 5, 6]))
+print(merge([1, 2, 3], [4, 4, 4, 5, 6]))
 
 # TO-DO: implement the Merge Sort function below USING RECURSION
 
